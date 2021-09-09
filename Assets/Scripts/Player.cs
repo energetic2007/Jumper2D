@@ -11,6 +11,7 @@ public class Player : Entity
     [SerializeField] private float jumpForce;
     private void Awake()
     {
+        lives = 3;
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         // Instance = this;
@@ -43,5 +44,8 @@ public class Player : Entity
     {
         if (other.tag == "DeathZone")
             Die();
+        if (other.tag == "enemy")
+            GetDamage();
     }
+
 }

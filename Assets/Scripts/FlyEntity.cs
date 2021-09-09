@@ -6,6 +6,10 @@ public class FlyEntity : Entity
 {
     private Vector3 dir;
     public GameObject flyEntity;
+    private void Awake()
+    {
+        lives = 1;
+    }
     private void Start()
     {
         dir = transform.right;
@@ -28,6 +32,10 @@ public class FlyEntity : Entity
         if (other.tag == "DeathZone")
         {
             Die();
+        }
+        if (other.tag == "player")
+        {
+            GetDamage();
         }
     }
 }
