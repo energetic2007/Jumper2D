@@ -5,7 +5,8 @@ using UnityEngine;
 public class FlyEntity : Entity
 {
     private Vector3 dir;
-    public GameObject flyEntity;
+    //public GameObject flyEntity;
+    [SerializeField] private GameObject flyEntityPref;
     private void Awake()
     {
         lives = 1;
@@ -13,6 +14,15 @@ public class FlyEntity : Entity
     private void Start()
     {
         dir = transform.right;
+
+        Vector3 SpawnPos = new Vector3();
+        for (int i = 0; i < 3; i++)
+        {
+            SpawnPos.x = 0;
+            SpawnPos.y += Random.Range(20, 40);
+            SpawnPos.z = 0;
+            Instantiate(flyEntityPref, SpawnPos, Quaternion.identity);
+        }
     }
     private void Update()
     {
@@ -31,7 +41,9 @@ public class FlyEntity : Entity
     {
         if (other.tag == "DeathZone")
         {
-            Die();
+            float RandX = Random.Range(0, 0);
+            float RandY = Random.Range(transform.position.y + 50f, transform.position.y + 60f);
+            transform.position = new Vector3(RandX, RandY, 0f);
         }
         if (other.tag == "player")
         {
