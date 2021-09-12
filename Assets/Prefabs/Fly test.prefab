@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2053602005214789256}
   - component: {fileID: 2053602005214789367}
-  - component: {fileID: 2053602005214789257}
   - component: {fileID: 2053602005214789366}
+  - component: {fileID: 8279250186159210032}
   m_Layer: 0
   m_Name: Fly test
   m_TagString: enemy
@@ -60,19 +60,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6195816, y: 0.53355694}
   m_EdgeRadius: 0
---- !u!114 &2053602005214789257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053602005214789365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad2461fa65f1437187b1ee83f0db342, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flyEntity: {fileID: 0}
 --- !u!50 &2053602005214789366
 Rigidbody2D:
   serializedVersion: 4
@@ -94,6 +81,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8279250186159210032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053602005214789365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad2461fa65f1437187b1ee83f0db342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flyEntityPref: {fileID: 0}
 --- !u!1 &2053602005936029744
 GameObject:
   m_ObjectHideFlags: 0

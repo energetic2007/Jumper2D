@@ -5,25 +5,12 @@ using UnityEngine;
 public class FlyEntity : Entity
 {
     private Vector3 dir;
-    //public GameObject flyEntity;
-    [SerializeField] private GameObject flyEntityPref;
     private void Awake()
     {
         lives = 1;
-    }
-    private void Start()
-    {
         dir = transform.right;
-
-        Vector3 SpawnPos = new Vector3();
-        for (int i = 0; i < 3; i++)
-        {
-            SpawnPos.x = 0;
-            SpawnPos.y += Random.Range(20, 40);
-            SpawnPos.z = 0;
-            Instantiate(flyEntityPref, SpawnPos, Quaternion.identity);
-        }
     }
+
     private void Update()
     {
         Move();
