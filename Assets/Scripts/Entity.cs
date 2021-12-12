@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour, IEntity
 {
-    protected int lives;
-    public virtual void GetDamage()
-    {
-        lives--;
-        if (lives < 1)
-            Die();
-    }
-    public virtual void Die()
-    {
-        Destroy(this.gameObject);
-    }
+  public int lives { get; set; }
+  [SerializeField] private protected SpawnField spawnField;
 
+  public virtual void GetDamage()
+  {
+    lives--;
+    if (lives < 1)
+    {
+      Die();
+    }
+  }
+  public virtual void Die() { }
 }

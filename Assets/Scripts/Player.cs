@@ -9,16 +9,16 @@ public class Player : Entity
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float speed;
     private void Awake()
     {
         lives = 3;
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
-        // Instance = this;
+        rb.freezeRotation = true;
     }
-    private void FixedUpdate()
+    private void Update()
     {
-        // CheckGround();
         if (Application.platform == RuntimePlatform.Android)
         {
             horizontal = Input.acceleration.x;
@@ -32,6 +32,10 @@ public class Player : Entity
             sprite.flipX = true;
         }
         rb.velocity = new Vector2(Input.acceleration.x * 10f, rb.velocity.y);
+
+        float x = Input.GetAxisRaw("Horizontal");
+        float moveBy = x * speed;
+        rb.velocity = new Vector2(moveBy, rb.velocity.y);
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -47,5 +51,6 @@ public class Player : Entity
         if (other.tag == "enemy")
             GetDamage();
     }
+
 
 }
