@@ -15,15 +15,30 @@ public class FollowingEnemy : Entity, IEntity
   }
   private void Update()
   {
-    // Move();
-    Follow();
+    // OnHold();
+    // Follow();
+    if (player.transform.position.y < centerPos.y - 10)
+    {
+      OnHold();
+    }
+
+    if (player.transform.position.y >= centerPos.y - 10)
+    {
+      Follow();
+    }
+
+    if (player.transform.position.y >= centerPos.y + 10)
+    {
+      OnHold();
+    }
   }
   private void UpdateCenterPosition()
   {
     centerPos = transform.position;
   }
-  private void Move()
+  private void OnHold()
   {
+    Debug.Log("on hold");
     if (Mathf.Abs(transform.position.x) >= 2.5f)
     {
       dir *= -1f;
@@ -32,7 +47,9 @@ public class FollowingEnemy : Entity, IEntity
   }
   private void Follow()
   {
-    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * 2);
+    Debug.Log("follow");
+
+    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime);
   }
   public void OnTriggerEnter2D(Collider2D other)
   {
@@ -51,4 +68,10 @@ public class FollowingEnemy : Entity, IEntity
     LevelGeneration.Regenerate(this.spawnField, this.gameObject);
     UpdateCenterPosition();
   }
+}
+
+enum FollowEnemyState
+{
+  OnHold,
+  Follow
 }
