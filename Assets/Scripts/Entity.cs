@@ -15,5 +15,7 @@ public class Entity : MonoBehaviour, IEntity
       Die();
     }
   }
-  public virtual void Die() { }
+  public virtual void Die()
+  {
+  }
 }

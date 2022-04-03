@@ -47,5 +47,11 @@ public class Player : Entity
       GetDamage();
   }
 
+  public override void Die()
+  {
+    base.Die();
+    MenuController.Instance.UpdateGameState(GameState.TryAgain);
+  }
+
 
 }
