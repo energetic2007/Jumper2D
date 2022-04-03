@@ -80,7 +80,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3518237000385715638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +99,8 @@ MonoBehaviour:
     maxX: 0
     minY: 0
     maxY: 0
-  jumpForce: 10
+  jumpForce: 7
+  xMoveSpeed: 0.1
   speed: 5
 --- !u!1 &3518237000433814101
 GameObject:

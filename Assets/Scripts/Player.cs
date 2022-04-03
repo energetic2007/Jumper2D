@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Player : Entity
 {
-  //public static Player Instance { get; set; }
   private float horizontal;
   private Rigidbody2D rb;
   private SpriteRenderer sprite;
   [SerializeField] private float jumpForce;
-  [SerializeField] private float speed;
+  [SerializeField] private float xMoveSpeed;
   private void Awake()
   {
     lives = 3;
     rb = GetComponent<Rigidbody2D>();
     sprite = GetComponentInChildren<SpriteRenderer>();
-    // rb.freezeRotation = true;
   }
   private void Update()
   {
@@ -31,17 +29,14 @@ public class Player : Entity
     {
       sprite.flipX = true;
     }
-    rb.velocity = new Vector2(Input.acceleration.x * 10f, rb.velocity.y);
-
-    float x = Input.GetAxisRaw("Horizontal");
-    float moveBy = x * speed;
-    rb.velocity = new Vector2(moveBy, rb.velocity.y);
+    float xOffset = Input.GetAxisRaw("Horizontal");
+    transform.position = new Vector2(transform.position.x + (xOffset * xMoveSpeed), transform.position.y);
   }
-  private void OnCollisionStay2D(Collision2D collision)
+  private void OnCollisionEnter2D(Collision2D collision)
   {
-    if ((collision.relativeVelocity.y > 0) || (collision.gameObject == Platform.Instance.gameObject))
+    if (collision.relativeVelocity.y > 0)
     {
-      rb.velocity = Vector2.up * jumpForce;
+      rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
   }
   private void OnTriggerEnter2D(Collider2D other)

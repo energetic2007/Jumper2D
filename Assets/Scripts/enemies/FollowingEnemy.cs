@@ -15,8 +15,6 @@ public class FollowingEnemy : Entity, IEntity
   }
   private void Update()
   {
-    // OnHold();
-    // Follow();
     if (player.transform.position.y < centerPos.y - 10)
     {
       OnHold();
@@ -38,7 +36,6 @@ public class FollowingEnemy : Entity, IEntity
   }
   private void OnHold()
   {
-    Debug.Log("on hold");
     if (Mathf.Abs(transform.position.x) >= 2.5f)
     {
       dir *= -1f;
@@ -47,8 +44,6 @@ public class FollowingEnemy : Entity, IEntity
   }
   private void Follow()
   {
-    Debug.Log("follow");
-
     transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime);
   }
   public void OnTriggerEnter2D(Collider2D other)
