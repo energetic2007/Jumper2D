@@ -7,16 +7,14 @@ public enum GameState
 {
   InGame,
   Pause,
-  TryAgain,
-  MainMenu
+  TryAgain
 }
 
 public class MenuController : MonoBehaviour
 {
   [SerializeField] GameObject PauseWindow;
-  [SerializeField] GameObject MenuWindow;
   [SerializeField] GameObject DeathWindow;
-  [SerializeField] GameObject GameWindow;
+  [SerializeField] GameObject MainUI;
   private static MenuController _instance;
   public static MenuController Instance
   {
@@ -27,10 +25,9 @@ public class MenuController : MonoBehaviour
   }
   void Awake()
   {
-    UpdateGameState(GameState.MainMenu);
+    UpdateGameState(GameState.InGame);
     _instance = this;
   }
-  public void OpenMenu() { UpdateGameState(GameState.MainMenu); }
   public void StartGame()
   {
     UpdateGameState(GameState.InGame);
@@ -40,10 +37,9 @@ public class MenuController : MonoBehaviour
 
   public void UpdateGameState(GameState nextState)
   {
-    MenuWindow.SetActive(nextState == GameState.MainMenu);
     DeathWindow.SetActive(nextState == GameState.TryAgain);
     PauseWindow.SetActive(nextState == GameState.Pause);
-    GameWindow.SetActive(nextState == GameState.InGame);
+    MainUI.SetActive(nextState == GameState.InGame);
     Time.timeScale = nextState == GameState.InGame ? 1 : 0;
   }
 }
