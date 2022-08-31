@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    private float horizontal;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     [SerializeField] private float jumpForce;
@@ -17,10 +16,7 @@ public class Player : Entity
     }
     private void Update()
     {
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            horizontal = Input.acceleration.x;
-        }
+
         if (Input.acceleration.x < 0)
         {
             sprite.flipX = false;
@@ -29,8 +25,11 @@ public class Player : Entity
         {
             sprite.flipX = true;
         }
-        float xOffset = Input.GetAxisRaw("Horizontal");
-        transform.position = new Vector2(transform.position.x + (xOffset * xMoveSpeed), transform.position.y);
+        if (lives > 0)
+        {
+            float xOffset = Input.GetAxisRaw("Horizontal");
+            transform.position = new Vector2(transform.position.x + (xOffset * xMoveSpeed), transform.position.y);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -52,6 +51,4 @@ public class Player : Entity
         base.Die();
         MenuController.Instance.UpdateGameState(GameState.TryAgain);
     }
-
-
 }

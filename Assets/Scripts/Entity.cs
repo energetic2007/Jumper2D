@@ -17,5 +17,6 @@ public class Entity : MonoBehaviour, IEntity
     }
     public virtual void Die()
     {
+        lives = 0;
     }
 }
