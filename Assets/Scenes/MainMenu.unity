@@ -296,6 +296,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 38899153}
     m_Modifications:
+    - target: {fileID: 1414214797344741204, guid: dd7400f9f88f8402da9d88c3890f0f94, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414214797344741204, guid: dd7400f9f88f8402da9d88c3890f0f94, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414214797344741204, guid: dd7400f9f88f8402da9d88c3890f0f94, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1618411919}
+    - target: {fileID: 1414214797344741204, guid: dd7400f9f88f8402da9d88c3890f0f94, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414214797344741204, guid: dd7400f9f88f8402da9d88c3890f0f94, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414214797344741204, guid: dd7400f9f88f8402da9d88c3890f0f94, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414214797344741204, guid: dd7400f9f88f8402da9d88c3890f0f94, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2220180173129234945, guid: dd7400f9f88f8402da9d88c3890f0f94, type: 3}
       propertyPath: m_Name
       value: MainWindow
