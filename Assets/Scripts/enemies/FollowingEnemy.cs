@@ -4,69 +4,69 @@ using UnityEngine;
 
 public class FollowingEnemy : Entity, IEntity
 {
-  private Vector3 dir;
-  private Vector3 centerPos;
-  [SerializeField] GameObject player;
-  public void Awake()
-  {
-    lives = 1;
-    dir = transform.right;
-    UpdateCenterPosition();
-  }
-  private void Update()
-  {
-    if (player.transform.position.y < centerPos.y - 10)
+    private Vector3 dir;
+    private Vector3 centerPos;
+    [SerializeField] GameObject player;
+    public void Awake()
     {
-      OnHold();
+        lives = 1;
+        dir = transform.right;
+        UpdateCenterPosition();
     }
+    private void Update()
+    {
+        if (player.transform.position.y < centerPos.y - 10)
+        {
+            OnHold();
+        }
 
-    if (player.transform.position.y >= centerPos.y - 10)
-    {
-      Follow();
-    }
+        if (player.transform.position.y >= centerPos.y - 10)
+        {
+            Follow();
+        }
 
-    if (player.transform.position.y >= centerPos.y + 10)
-    {
-      OnHold();
+        if (player.transform.position.y >= centerPos.y + 10)
+        {
+            OnHold();
+        }
     }
-  }
-  private void UpdateCenterPosition()
-  {
-    centerPos = transform.position;
-  }
-  private void OnHold()
-  {
-    if (Mathf.Abs(transform.position.x) >= 2.5f)
+    private void UpdateCenterPosition()
     {
-      dir *= -1f;
+        centerPos = transform.position;
     }
-    transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, Time.deltaTime);
-  }
-  private void Follow()
-  {
-    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime);
-  }
-  public void OnTriggerEnter2D(Collider2D other)
-  {
-    if (other.tag == "DeathZone")
+    private void OnHold()
     {
-      LevelGeneration.Regenerate(spawnField, this.gameObject);
-      UpdateCenterPosition();
+        if (Mathf.Abs(transform.position.x) >= 2.5f)
+        {
+            dir *= -1f;
+        }
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, Time.deltaTime);
     }
-    if (other.tag == "Player")
+    private void Follow()
     {
-      GetDamage();
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime);
     }
-  }
-  public override void Die()
-  {
-    LevelGeneration.Regenerate(this.spawnField, this.gameObject);
-    UpdateCenterPosition();
-  }
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "DeathZone")
+        {
+            LevelGeneration.Regenerate(spawnField, this.gameObject);
+            UpdateCenterPosition();
+        }
+        if (other.tag == "Player")
+        {
+            GetDamage();
+        }
+    }
+    public override void Die()
+    {
+        LevelGeneration.Regenerate(this.spawnField, this.gameObject);
+        UpdateCenterPosition();
+    }
 }
 
 enum FollowEnemyState
 {
-  OnHold,
-  Follow
+    OnHold,
+    Follow
 }

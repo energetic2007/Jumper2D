@@ -4,54 +4,54 @@ using UnityEngine;
 
 public class Player : Entity
 {
-  private float horizontal;
-  private Rigidbody2D rb;
-  private SpriteRenderer sprite;
-  [SerializeField] private float jumpForce;
-  [SerializeField] private float xMoveSpeed;
-  private void Awake()
-  {
-    lives = 3;
-    rb = GetComponent<Rigidbody2D>();
-    sprite = GetComponentInChildren<SpriteRenderer>();
-  }
-  private void Update()
-  {
-    if (Application.platform == RuntimePlatform.Android)
+    private float horizontal;
+    private Rigidbody2D rb;
+    private SpriteRenderer sprite;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float xMoveSpeed;
+    private void Awake()
     {
-      horizontal = Input.acceleration.x;
+        lives = 3;
+        rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
-    if (Input.acceleration.x < 0)
+    private void Update()
     {
-      sprite.flipX = false;
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            horizontal = Input.acceleration.x;
+        }
+        if (Input.acceleration.x < 0)
+        {
+            sprite.flipX = false;
+        }
+        if (Input.acceleration.x > 0)
+        {
+            sprite.flipX = true;
+        }
+        float xOffset = Input.GetAxisRaw("Horizontal");
+        transform.position = new Vector2(transform.position.x + (xOffset * xMoveSpeed), transform.position.y);
     }
-    if (Input.acceleration.x > 0)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-      sprite.flipX = true;
+        if (collision.relativeVelocity.y > 0)
+        {
+            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        }
     }
-    float xOffset = Input.GetAxisRaw("Horizontal");
-    transform.position = new Vector2(transform.position.x + (xOffset * xMoveSpeed), transform.position.y);
-  }
-  private void OnCollisionEnter2D(Collision2D collision)
-  {
-    if (collision.relativeVelocity.y > 0)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-      rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        if (other.tag == "DeathZone")
+            Die();
+        if (other.tag == "enemy")
+            GetDamage();
     }
-  }
-  private void OnTriggerEnter2D(Collider2D other)
-  {
-    if (other.tag == "DeathZone")
-      Die();
-    if (other.tag == "enemy")
-      GetDamage();
-  }
 
-  public override void Die()
-  {
-    base.Die();
-    MenuController.Instance.UpdateGameState(GameState.TryAgain);
-  }
+    public override void Die()
+    {
+        base.Die();
+        MenuController.Instance.UpdateGameState(GameState.TryAgain);
+    }
 
 
 }
