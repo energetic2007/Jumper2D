@@ -20,20 +20,20 @@ public class LevelGeneration : MonoBehaviour
 
     private void SpawnEntity(GameObject pref, SpawnField spawnField)
     {
-        Vector3 SpawnPos = new Vector3();
+        var SpawnPos = new Vector2();
         for (int i = 0; i < spawnField.amount; i++)
         {
             SpawnPos.x = Random.Range(spawnField.minX, spawnField.maxX);
             SpawnPos.y += Random.Range(spawnField.minY, spawnField.maxY);
-            SpawnPos.z = 0;
             Instantiate(pref, SpawnPos, Quaternion.identity);
         }
+
     }
 
     public static void Regenerate(SpawnField spawnField, GameObject gameObject)
     {
         float RandX = Random.Range(spawnField.minX, spawnField.maxX);
         float RandY = Random.Range(gameObject.transform.position.y + 20, gameObject.transform.position.y + 22);
-        gameObject.transform.position = new Vector3(RandX, RandY, 0f);
+        gameObject.transform.position = new Vector2(RandX, RandY);
     }
 }
