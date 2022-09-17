@@ -101,7 +101,6 @@ MonoBehaviour:
     maxY: 0
   jumpForce: 7
   xMoveSpeed: 0.1
-  speed: 5
 --- !u!1 &3518237000433814101
 GameObject:
   m_ObjectHideFlags: 0

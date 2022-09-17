@@ -18,13 +18,10 @@ public class Player : Entity
     {
 
         if (Input.acceleration.x < 0)
-        {
             sprite.flipX = false;
-        }
-        if (Input.acceleration.x > 0)
-        {
+        else
             sprite.flipX = true;
-        }
+
         if (lives > 0)
         {
             float xOffset = Input.GetAxisRaw("Horizontal");
@@ -33,6 +30,7 @@ public class Player : Entity
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.relativeVelocity.y > 0)
         {
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
