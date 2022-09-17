@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Player player;
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        int numChildren = transform.childCount;
+
+        if (numChildren > player.lives)
+        {
+            Destroy(transform.GetChild(numChildren - 1).gameObject);
+        }
     }
 }

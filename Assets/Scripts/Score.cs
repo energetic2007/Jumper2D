@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Score : MonoBehaviour
 {
     private int currentScore = 0;
     [SerializeField] private GameObject player;
     private int highestScore;
-    [SerializeField] private Text currentScoreText;
-    [SerializeField] private Text highScoreText;
+    [SerializeField] private TMP_Text currentScoreText;
+    [SerializeField] private TMP_Text highScoreText;
 
     private void FixedUpdate()
     {
