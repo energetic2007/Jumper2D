@@ -14,7 +14,6 @@ public class Score : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(player.transform.position.y);
         int currentY = Mathf.RoundToInt(player.transform.position.y);
         if (currentScore < currentY)
         {

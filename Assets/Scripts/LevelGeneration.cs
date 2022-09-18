@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject flyEntityPref;
-    [SerializeField]
-    private SpawnField flyEntitySpawn;
-    [SerializeField]
-    private GameObject PlatformPref;
-    [SerializeField]
-    private SpawnField PlatformSpawn;
+    [SerializeField] private GameObject flyEntityPref;
+    [SerializeField] private SpawnField flyEntitySpawn;
+    [SerializeField] private GameObject PlatformPref;
+    [SerializeField] private SpawnField PlatformSpawn;
+    [SerializeField] private GameObject LifeEntityPref;
+    [SerializeField] private SpawnField LifeEntitySpawn;
     [SerializeField] private Transform LevelGenerator;
     private void Start()
     {
         SpawnEntity(flyEntityPref, flyEntitySpawn);
         SpawnEntity(PlatformPref, PlatformSpawn);
+        SpawnEntity(LifeEntityPref, LifeEntitySpawn);
     }
 
     private void SpawnEntity(GameObject pref, SpawnField spawnField)
