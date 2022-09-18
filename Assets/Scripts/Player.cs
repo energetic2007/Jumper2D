@@ -16,7 +16,6 @@ public class Player : Entity
     }
     private void Update()
     {
-
         if (Input.acceleration.x < 0)
             sprite.flipX = false;
         else
@@ -42,6 +41,8 @@ public class Player : Entity
             Die();
         if (other.tag == "enemy")
             GetDamage();
+        if (other.tag == "life")
+            lives++;
     }
 
     public override void Die()

@@ -5,10 +5,9 @@ using UnityEngine;
 public class HealthController : MonoBehaviour
 {
     [SerializeField] private Player player;
-    void Start()
-    {
+    [SerializeField] private GameObject lifeElement;
+    [SerializeField] private GameObject lifeContainer;
 
-    }
 
     void Update()
     {
@@ -17,6 +16,10 @@ public class HealthController : MonoBehaviour
         if (numChildren > player.lives)
         {
             Destroy(transform.GetChild(numChildren - 1).gameObject);
+        }
+        if (numChildren < player.lives)
+        {
+            Instantiate(lifeElement, transform);
         }
     }
 }

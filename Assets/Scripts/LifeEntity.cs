@@ -16,7 +16,7 @@ public class LifeEntity : Entity, IEntity
         }
         if (other.tag == "Player")
         {
-            Debug.Log("a");
+            GetDamage();
         }
     }
     public override void Die()
