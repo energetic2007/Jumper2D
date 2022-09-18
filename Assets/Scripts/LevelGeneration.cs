@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
-    [SerializeField] private GameObject flyEntityPref;
-    [SerializeField] private SpawnField flyEntitySpawn;
-    [SerializeField] private GameObject PlatformPref;
-    [SerializeField] private SpawnField PlatformSpawn;
-    [SerializeField] private GameObject LifeEntityPref;
-    [SerializeField] private SpawnField LifeEntitySpawn;
-    [SerializeField] private Transform LevelGenerator;
+    [SerializeField] private SpawnField flyEnemySpawn;
+    [SerializeField] private GameObject flyEnemyPref;
+
+    [Space(20)]
+    [SerializeField] private SpawnField platformSpawn;
+    [SerializeField] private GameObject platformPref;
+
+    [Space(20)]
+    [SerializeField] private SpawnField lifeEntitySpawn;
+    [SerializeField] private GameObject lifeEntityPref;
+
+    [Space(20)]
+    [SerializeField] private SpawnField followingEnemySpawn;
+    [SerializeField] private GameObject followingEnemyPref;
     private void Start()
     {
-        SpawnEntity(flyEntityPref, flyEntitySpawn);
-        SpawnEntity(PlatformPref, PlatformSpawn);
-        SpawnEntity(LifeEntityPref, LifeEntitySpawn);
+        SpawnEntity(flyEnemyPref, flyEnemySpawn);
+        SpawnEntity(platformPref, platformSpawn);
+        SpawnEntity(lifeEntityPref, lifeEntitySpawn);
+        SpawnEntity(followingEnemyPref, followingEnemySpawn);
     }
 
     private void SpawnEntity(GameObject pref, SpawnField spawnField)
@@ -25,7 +33,7 @@ public class LevelGeneration : MonoBehaviour
         {
             SpawnPos.x = Random.Range(spawnField.minX, spawnField.maxX);
             SpawnPos.y += Random.Range(spawnField.minY, spawnField.maxY);
-            Instantiate(pref, SpawnPos, Quaternion.identity, LevelGenerator);
+            Instantiate(pref, SpawnPos, Quaternion.identity, transform);
         }
     }
 
