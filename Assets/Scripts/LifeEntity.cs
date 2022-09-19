@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LifeEntity : Entity, IEntity
 {
+    [SerializeField] private LevelGeneration levelGeneration;
     public void Awake()
     {
         lives = 1;
@@ -12,7 +13,7 @@ public class LifeEntity : Entity, IEntity
     {
         if (other.tag == "DeathZone")
         {
-            LevelGeneration.Regenerate(spawnField, this.gameObject);
+            this.levelGeneration.RegenerateLifeEntity(this.gameObject);
         }
         if (other.tag == "Player")
         {
@@ -21,6 +22,7 @@ public class LifeEntity : Entity, IEntity
     }
     public override void Die()
     {
-        LevelGeneration.Regenerate(this.spawnField, this.gameObject);
+        this.levelGeneration.RegenerateLifeEntity(this.gameObject);
+
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FlyEnemy : Entity, IEntity
 {
     private Vector3 dir;
+    [SerializeField] private LevelGeneration levelGeneration;
     public void Awake()
     {
         lives = 1;
@@ -26,7 +27,7 @@ public class FlyEnemy : Entity, IEntity
     {
         if (other.tag == "DeathZone")
         {
-            LevelGeneration.Regenerate(spawnField, this.gameObject);
+            this.levelGeneration.RegenerateFlyEnemy(this.gameObject);
         }
         if (other.tag == "Player")
         {
@@ -35,6 +36,6 @@ public class FlyEnemy : Entity, IEntity
     }
     public override void Die()
     {
-        LevelGeneration.Regenerate(this.spawnField, this.gameObject);
+        this.levelGeneration.RegenerateFlyEnemy(this.gameObject);
     }
 }

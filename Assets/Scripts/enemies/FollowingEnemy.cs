@@ -7,6 +7,7 @@ public class FollowingEnemy : Entity, IEntity
     private Vector3 dir;
     private Vector3 centerPos;
     [SerializeField] GameObject player;
+    [SerializeField] private LevelGeneration levelGeneration;
     public void Awake()
     {
         lives = 1;
@@ -50,7 +51,7 @@ public class FollowingEnemy : Entity, IEntity
     {
         if (other.tag == "DeathZone")
         {
-            LevelGeneration.Regenerate(spawnField, this.gameObject);
+            this.levelGeneration.RegenerateFollowingEnemy(this.gameObject);
             UpdateCenterPosition();
         }
         if (other.tag == "Player")
@@ -60,7 +61,7 @@ public class FollowingEnemy : Entity, IEntity
     }
     public override void Die()
     {
-        LevelGeneration.Regenerate(this.spawnField, this.gameObject);
+        this.levelGeneration.RegenerateFollowingEnemy(this.gameObject);
         UpdateCenterPosition();
     }
 }

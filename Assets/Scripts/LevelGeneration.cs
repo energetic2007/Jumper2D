@@ -37,10 +37,30 @@ public class LevelGeneration : MonoBehaviour
         }
     }
 
-    public static void Regenerate(SpawnField spawnField, GameObject gameObject)
+    private void Regenerate(GameObject gameObject, SpawnField spawnField)
     {
         float RandX = Random.Range(spawnField.minX, spawnField.maxX);
         float RandY = Random.Range(gameObject.transform.position.y + spawnField.minY, gameObject.transform.position.y + spawnField.maxY);
         gameObject.transform.position = new Vector2(RandX, RandY);
+    }
+
+    public void RegenerateFlyEnemy(GameObject gameObject)
+    {
+        this.Regenerate(gameObject, this.flyEnemySpawn);
+    }
+
+    public void RegenerateLifeEntity(GameObject gameObject)
+    {
+        this.Regenerate(gameObject, this.lifeEntitySpawn);
+    }
+
+    public void RegenerateFollowingEnemy(GameObject gameObject)
+    {
+        this.Regenerate(gameObject, this.followingEnemySpawn);
+    }
+
+    public void RegeneratePlaform(GameObject gameObject)
+    {
+        this.Regenerate(gameObject, this.platformSpawn);
     }
 }
