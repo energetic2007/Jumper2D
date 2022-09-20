@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 53c5052c5aa653445bde9f81f8d99fd4
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Moshita Mono
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1009dc234001dc444986c21b4d2f915e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
