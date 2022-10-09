@@ -1,7 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+public delegate void Delegate();
 public class Player : Entity
 {
     private Rigidbody2D rb;
@@ -38,13 +39,21 @@ public class Player : Entity
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "DeathZone")
-            Die();
+        {
+            EventPublisher.getInstance().CreatePlayerDieEvent();
+            StartCoroutine(WaitDie());
+        }
         if (other.tag == "enemy")
             GetDamage();
         if (other.tag == "life")
             lives++;
     }
-
+    IEnumerator WaitDie()
+    {
+        yield return new WaitForSeconds(1);
+        Die();
+        StopCoroutine(WaitDie());
+    }
     public override void Die()
     {
         base.Die();

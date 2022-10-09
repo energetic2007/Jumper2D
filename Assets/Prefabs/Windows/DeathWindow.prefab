@@ -366,6 +366,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4066082556011383357}
     m_Modifications:
+    - target: {fileID: 6439920752256100522, guid: bca6041028ffa4766849baf76006c8e3, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439920752256100522, guid: bca6041028ffa4766849baf76006c8e3, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439920752256100522, guid: bca6041028ffa4766849baf76006c8e3, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6439920752367289050, guid: bca6041028ffa4766849baf76006c8e3, type: 3}
       propertyPath: m_Name
       value: Button_Play
