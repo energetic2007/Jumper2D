@@ -13,7 +13,7 @@ public class LifeEntity : Entity, IEntity
     {
         if (other.tag == "DeathZone")
         {
-            this.levelGeneration.RegenerateLifeEntity(this.gameObject);
+            this.levelGeneration.RegenerateLifeEntity(transform.position.y);
         }
         if (other.tag == "Player")
         {
@@ -22,7 +22,6 @@ public class LifeEntity : Entity, IEntity
     }
     public override void Die()
     {
-        this.levelGeneration.RegenerateLifeEntity(this.gameObject);
-
+        this.levelGeneration.RegenerateLifeEntity(transform.position.y);
     }
 }

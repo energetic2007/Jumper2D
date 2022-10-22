@@ -51,7 +51,7 @@ public class FollowingEnemy : Entity, IEntity
     {
         if (other.tag == "DeathZone")
         {
-            this.levelGeneration.RegenerateFollowingEnemy(this.gameObject);
+            this.levelGeneration.RegenerateFollowingEnemy(transform.position.y);
             UpdateCenterPosition();
         }
         if (other.tag == "Player")
@@ -61,7 +61,7 @@ public class FollowingEnemy : Entity, IEntity
     }
     public override void Die()
     {
-        this.levelGeneration.RegenerateFollowingEnemy(this.gameObject);
+        this.levelGeneration.RegenerateFollowingEnemy(transform.position.y);
         UpdateCenterPosition();
     }
 }

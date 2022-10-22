@@ -27,8 +27,6 @@ public class CameraController : MonoBehaviour
     private void OnPlayerDie()
     {
         _checkPlauerStat = true;
-        //var cameraPos = new Vector3(0, transform.position.y - 5, -10);
-        // transform.position = Vector3.Lerp(transform.position, cameraPos, Time.deltaTime);
     }
 }
 

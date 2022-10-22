@@ -16,7 +16,7 @@ public class Platform : MonoBehaviour
         {
             // GetComponent<LevelGeneration>().RegeneratePlaform(this.gameObject);
             // FindObjectOfType<LevelGeneration>().RegeneratePlaform(this.gameObject);
-            this.levelGeneration.RegeneratePlaform(this.gameObject);
+            this.levelGeneration.RegeneratePlaform(gameObject);
         }
     }
 }

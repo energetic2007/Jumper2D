@@ -20,47 +20,55 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] private GameObject followingEnemyPref;
     private void Start()
     {
-        SpawnEntity(flyEnemyPref, flyEnemySpawn);
-        SpawnEntity(platformPref, platformSpawn);
-        SpawnEntity(lifeEntityPref, lifeEntitySpawn);
-        SpawnEntity(followingEnemyPref, followingEnemySpawn);
+        InitialGenerate(flyEnemyPref, flyEnemySpawn);
+        InitialGenerate(platformPref, platformSpawn);
+        InitialGenerate(lifeEntityPref, lifeEntitySpawn);
+        InitialGenerate(followingEnemyPref, followingEnemySpawn);
     }
 
-    private void SpawnEntity(GameObject pref, SpawnField spawnField)
+    public void SpawnEntity(GameObject pref, SpawnField spawnField, float yOffset)
     {
         var SpawnPos = new Vector2();
+        SpawnPos.x = Random.Range(spawnField.minX, spawnField.maxX);
+        SpawnPos.y = Random.Range(spawnField.minY, spawnField.maxY) + yOffset;
+        pref.transform.position = SpawnPos;
+
+    }
+
+    public void InitialGenerate(GameObject pref, SpawnField spawnField)
+    {
         for (int i = 0; i < spawnField.amount; i++)
         {
-            SpawnPos.x = Random.Range(spawnField.minX, spawnField.maxX);
-            SpawnPos.y += Random.Range(spawnField.minY, spawnField.maxY);
-            Instantiate(pref, SpawnPos, Quaternion.identity, transform);
+            SpawnEntity(Instantiate(pref), spawnField, 0f + i);
         }
     }
 
-    private void Regenerate(GameObject gameObject, SpawnField spawnField)
+    /*
+        private void Regenerate(GameObject gameObject, SpawnField spawnField)
+        {
+            float RandX = Random.Range(spawnField.minX, spawnField.maxX);
+            float RandY = Random.Range(gameObject.transform.position.y + spawnField.minY, gameObject.transform.position.y + spawnField.maxY);
+            gameObject.transform.position = new Vector2(RandX, RandY);
+        }
+    */
+
+    public void RegenerateFlyEnemy(float yOffset)
     {
-        float RandX = Random.Range(spawnField.minX, spawnField.maxX);
-        float RandY = Random.Range(gameObject.transform.position.y + spawnField.minY, gameObject.transform.position.y + spawnField.maxY);
-        gameObject.transform.position = new Vector2(RandX, RandY);
+        SpawnEntity(flyEnemyPref, this.flyEnemySpawn, yOffset);
     }
 
-    public void RegenerateFlyEnemy(GameObject gameObject)
+    public void RegenerateLifeEntity(float yOffset)
     {
-        this.Regenerate(gameObject, this.flyEnemySpawn);
+        SpawnEntity(lifeEntityPref, this.lifeEntitySpawn, yOffset);
     }
 
-    public void RegenerateLifeEntity(GameObject gameObject)
+    public void RegenerateFollowingEnemy(float yOffset)
     {
-        this.Regenerate(gameObject, this.lifeEntitySpawn);
+        SpawnEntity(followingEnemyPref, this.followingEnemySpawn, yOffset);
     }
 
-    public void RegenerateFollowingEnemy(GameObject gameObject)
+    public void RegeneratePlaform(GameObject platform)
     {
-        this.Regenerate(gameObject, this.followingEnemySpawn);
-    }
-
-    public void RegeneratePlaform(GameObject gameObject)
-    {
-        this.Regenerate(gameObject, this.platformSpawn);
+        SpawnEntity(platform, this.platformSpawn, platform.transform.position.y + 10);
     }
 }
