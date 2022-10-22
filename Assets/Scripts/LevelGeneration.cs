@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
+    // TODO Заменить на реальный размер экрана
+    const int ENTITY_SPAWN_SCREEN_OFFSET_Y = 10;
     [SerializeField] private SpawnField flyEnemySpawn;
     [SerializeField] private GameObject flyEnemyPref;
 
@@ -26,7 +28,7 @@ public class LevelGeneration : MonoBehaviour
         InitialGenerate(followingEnemyPref, followingEnemySpawn);
     }
 
-    public void SpawnEntity(GameObject pref, SpawnField spawnField, float yOffset)
+    private void RespawnEntity(GameObject pref, SpawnField spawnField, float yOffset)
     {
         var SpawnPos = new Vector2();
         SpawnPos.x = Random.Range(spawnField.minX, spawnField.maxX);
@@ -35,11 +37,11 @@ public class LevelGeneration : MonoBehaviour
 
     }
 
-    public void InitialGenerate(GameObject pref, SpawnField spawnField)
+    private void InitialGenerate(GameObject pref, SpawnField spawnField)
     {
         for (int i = 0; i < spawnField.amount; i++)
         {
-            SpawnEntity(Instantiate(pref), spawnField, 0f + i);
+            RespawnEntity(Instantiate(pref), spawnField, 0f + i);
         }
     }
 
@@ -52,23 +54,23 @@ public class LevelGeneration : MonoBehaviour
         }
     */
 
-    public void RegenerateFlyEnemy(float yOffset)
+    public void RegenerateFlyEnemy(GameObject flyEnemy)
     {
-        SpawnEntity(flyEnemyPref, this.flyEnemySpawn, yOffset);
+        RespawnEntity(flyEnemy, this.flyEnemySpawn, flyEnemy.transform.position.y + ENTITY_SPAWN_SCREEN_OFFSET_Y);
     }
 
-    public void RegenerateLifeEntity(float yOffset)
+    public void RegenerateLifeEntity(GameObject lifeEntity)
     {
-        SpawnEntity(lifeEntityPref, this.lifeEntitySpawn, yOffset);
+        RespawnEntity(lifeEntity, this.lifeEntitySpawn, lifeEntity.transform.position.y + ENTITY_SPAWN_SCREEN_OFFSET_Y);
     }
 
-    public void RegenerateFollowingEnemy(float yOffset)
+    public void RegenerateFollowingEnemy(GameObject followingEnemy)
     {
-        SpawnEntity(followingEnemyPref, this.followingEnemySpawn, yOffset);
+        RespawnEntity(followingEnemy, this.followingEnemySpawn, followingEnemy.transform.position.y + ENTITY_SPAWN_SCREEN_OFFSET_Y);
     }
 
     public void RegeneratePlaform(GameObject platform)
     {
-        SpawnEntity(platform, this.platformSpawn, platform.transform.position.y + 10);
+        RespawnEntity(platform, this.platformSpawn, platform.transform.position.y + ENTITY_SPAWN_SCREEN_OFFSET_Y);
     }
 }

@@ -27,7 +27,7 @@ public class FlyEnemy : Entity, IEntity
     {
         if (other.tag == "DeathZone")
         {
-            this.levelGeneration.RegenerateFlyEnemy(transform.position.y);
+            this.levelGeneration.RegenerateFlyEnemy(gameObject);
         }
         if (other.tag == "Player")
         {
@@ -36,6 +36,6 @@ public class FlyEnemy : Entity, IEntity
     }
     public override void Die()
     {
-        this.levelGeneration.RegenerateFlyEnemy(transform.position.y);
+        this.levelGeneration.RegenerateFlyEnemy(gameObject);
     }
 }
