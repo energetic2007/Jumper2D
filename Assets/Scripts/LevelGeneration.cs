@@ -34,7 +34,6 @@ public class LevelGeneration : MonoBehaviour
         SpawnPos.x = Random.Range(spawnField.minX, spawnField.maxX);
         SpawnPos.y = Random.Range(spawnField.minY, spawnField.maxY) + yOffset;
         pref.transform.position = SpawnPos;
-
     }
 
     private void InitialGenerate(GameObject pref, SpawnField spawnField)
@@ -64,9 +63,10 @@ public class LevelGeneration : MonoBehaviour
         RespawnEntity(lifeEntity, this.lifeEntitySpawn, lifeEntity.transform.position.y + ENTITY_SPAWN_SCREEN_OFFSET_Y);
     }
 
-    public void RegenerateFollowingEnemy(GameObject followingEnemy)
+    public void RegenerateFollowingEnemy(FollowingEnemy followingEnemy)
     {
-        RespawnEntity(followingEnemy, this.followingEnemySpawn, followingEnemy.transform.position.y + ENTITY_SPAWN_SCREEN_OFFSET_Y);
+        RespawnEntity(followingEnemy.gameObject, this.followingEnemySpawn, followingEnemy.transform.position.y + ENTITY_SPAWN_SCREEN_OFFSET_Y);
+        followingEnemy.UpdateCenterPosition();
     }
 
     public void RegeneratePlaform(GameObject platform)

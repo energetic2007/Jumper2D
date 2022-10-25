@@ -14,8 +14,6 @@ public class Platform : MonoBehaviour
     {
         if (other.tag == "DeathZone")
         {
-            // GetComponent<LevelGeneration>().RegeneratePlaform(this.gameObject);
-            // FindObjectOfType<LevelGeneration>().RegeneratePlaform(this.gameObject);
             this.levelGeneration.RegeneratePlaform(gameObject);
         }
     }

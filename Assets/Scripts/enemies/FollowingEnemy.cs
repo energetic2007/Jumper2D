@@ -12,7 +12,6 @@ public class FollowingEnemy : Entity, IEntity
     {
         lives = 1;
         dir = transform.right;
-        UpdateCenterPosition();
     }
     private void Update()
     {
@@ -31,7 +30,7 @@ public class FollowingEnemy : Entity, IEntity
             OnHold();
         }
     }
-    private void UpdateCenterPosition()
+    public void UpdateCenterPosition()
     {
         centerPos = transform.position;
     }
@@ -45,13 +44,13 @@ public class FollowingEnemy : Entity, IEntity
     }
     private void Follow()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * 2);
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "DeathZone")
         {
-            this.levelGeneration.RegenerateFollowingEnemy(gameObject);
+            this.levelGeneration.RegenerateFollowingEnemy(this);
             UpdateCenterPosition();
         }
         if (other.tag == "Player")
@@ -61,13 +60,8 @@ public class FollowingEnemy : Entity, IEntity
     }
     public override void Die()
     {
-        this.levelGeneration.RegenerateFollowingEnemy(gameObject);
+        this.levelGeneration.RegenerateFollowingEnemy(this);
         UpdateCenterPosition();
     }
 }
 
-enum FollowEnemyState
-{
-    OnHold,
-    Follow
-}
