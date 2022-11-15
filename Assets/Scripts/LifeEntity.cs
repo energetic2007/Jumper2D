@@ -23,5 +23,7 @@ public class LifeEntity : Entity, IEntity
     public override void Die()
     {
         this.levelGeneration.RegenerateLifeEntity(gameObject);
+
     }
+
 }
