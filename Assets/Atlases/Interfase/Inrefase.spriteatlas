@@ -68,13 +68,12 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 0f1882645c7744ef28e065e01d805416, type: 3}
-    totalSpriteSurfaceArea: 3161329
+    totalSpriteSurfaceArea: 3154846
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: bdd26e90fc285a44bbe89b4925d4bb37, type: 3}
   - {fileID: 21300000, guid: 40d0e6c0818c445f0a9010d8b9582903, type: 3}
   - {fileID: 21300000, guid: 3c9c4e911e29d4313be5ea51b950df0f, type: 3}
   - {fileID: 21300000, guid: 193740e16a9f8fc48a48578b2617494d, type: 3}
@@ -85,9 +84,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7b2256f4ae958e7458c5582ba8309ade, type: 3}
   - {fileID: 21300000, guid: 97a16f25953504f4d9b463f9cddab934, type: 3}
   - {fileID: 21300000, guid: b0c11985aa3db0d42a4f95f5fb22b847, type: 3}
-  - {fileID: 21300000, guid: acd8ee95562918b489f6cf49f1b628bc, type: 3}
   - {fileID: 21300000, guid: 15eab2064f20b4a28974434845108aa8, type: 3}
-  - {fileID: 21300000, guid: f5c95c166c8ab6c4391450953fcd65ca, type: 3}
   - {fileID: 21300000, guid: 15cb6ba66543b479fb3c29c7fbb9fa0f, type: 3}
   - {fileID: 21300000, guid: d00dc037bcf8b7d4990d7c2bcf77ebff, type: 3}
   - {fileID: 21300000, guid: 7738d068643021a489b6fb155552ccec, type: 3}
@@ -101,12 +98,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f31a06fce9d734e82a5c697fc4075344, type: 3}
   - {fileID: 21300000, guid: 9961f12d132144b84a8e2bf35fa3fd73, type: 3}
   - {fileID: 21300000, guid: df037bae76899304eabf73c3d7245548, type: 3}
-  - {fileID: 21300000, guid: feea5fced8e8dd645bd9c0c2398ae329, type: 3}
   - {fileID: 21300000, guid: 083b4bdee9652d148899aacbba4c3d23, type: 3}
   - {fileID: 21300000, guid: 2cd26f0f3c3c14143b7c2dcb71616ab9, type: 3}
   - {fileID: 21300000, guid: a9f6244ff9ef2478c96680e5b80abe8e, type: 3}
   m_PackedSpriteNamesToIndex:
-  - heart_stroke_plus
   - circle_stroke
   - cross_2
   - i_heard
@@ -117,9 +112,7 @@ SpriteAtlas:
   - i_enemy_3
   - triangle_stroke
   - i_enemy_2
-  - heart_plus
   - square_stroke
-  - heart
   - circle
   - gradient
   - i_heard_stroke
@@ -133,7 +126,6 @@ SpriteAtlas:
   - square
   - radial_glow
   - i_enemy_4
-  - heart_stroke
   - i_back
   - bg_2
   - cross
