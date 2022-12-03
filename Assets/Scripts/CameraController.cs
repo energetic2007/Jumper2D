@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform _player;
     private bool _checkPlauerStat = false;
+
     private void Awake()
     {
         if (!_player)
@@ -13,6 +14,7 @@ public class CameraController : MonoBehaviour
 
         EventPublisher.getInstance().OnPlayerDie += OnPlayerDie;
     }
+
     private void Update()
     {
         var playerPos = new Vector3(0, _player.position.y + 2, -10);

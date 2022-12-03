@@ -5,10 +5,12 @@ using UnityEngine;
 public class LifeEntity : Entity, IEntity
 {
     [SerializeField] private LevelGeneration levelGeneration;
+
     public void Awake()
     {
         lives = 1;
     }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "DeathZone")
@@ -20,10 +22,10 @@ public class LifeEntity : Entity, IEntity
             GetDamage();
         }
     }
+
     public override void Die()
     {
         this.levelGeneration.RegenerateLifeEntity(gameObject);
 
     }
-
 }

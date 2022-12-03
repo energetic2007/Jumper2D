@@ -5,7 +5,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour, IEntity
 {
     public int lives { get; set; }
-    [SerializeField] private protected SpawnField spawnField;
+
 
     public virtual void GetDamage()
     {
@@ -15,6 +15,7 @@ public class Entity : MonoBehaviour, IEntity
             Die();
         }
     }
+
     public virtual void Die()
     {
         lives = 0;

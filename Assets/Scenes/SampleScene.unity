@@ -321,7 +321,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2053602005214789256, guid: 424486be4880e4df9b90c88c63e25616, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2053602005214789256, guid: 424486be4880e4df9b90c88c63e25616, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1190,8 +1190,8 @@ Transform:
   m_Children:
   - {fileID: 620523338}
   - {fileID: 1723182435}
-  - {fileID: 985607396}
   - {fileID: 1375148571}
+  - {fileID: 985607396}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1211,8 +1211,8 @@ MonoBehaviour:
     amount: 3
     minX: 0
     maxX: 0
-    minY: 6
-    maxY: 10
+    minY: 50
+    maxY: 100
   flyEnemyPref: {fileID: 1375148567}
   platformSpawn:
     amount: 10
@@ -1223,10 +1223,10 @@ MonoBehaviour:
   platformPref: {fileID: 620523334}
   lifeEntitySpawn:
     amount: 2
-    minX: 0
-    maxX: 0
-    minY: 10
-    maxY: 20
+    minX: -1.7
+    maxX: 1.7
+    minY: 50
+    maxY: 100
   lifeEntityPref: {fileID: 1723182431}
   followingEnemySpawn:
     amount: 1
@@ -1413,7 +1413,7 @@ PrefabInstance:
       objectReference: {fileID: 2002096698}
     - target: {fileID: 7412503733048002770, guid: 4be19f0e0ca804ebf94546b6127dded8, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7412503733048002770, guid: 4be19f0e0ca804ebf94546b6127dded8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1750,30 +1750,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1248925240}
-    - target: {fileID: 6996900825548947598, guid: 3069661bef05f324bb09cd014931ab90, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: f3bcfce96fa63da4ba22ddf2b21c183a, type: 2}
-    - target: {fileID: 6996900825548947598, guid: 3069661bef05f324bb09cd014931ab90, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6996900825548947598, guid: 3069661bef05f324bb09cd014931ab90, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6996900825548947598, guid: 3069661bef05f324bb09cd014931ab90, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6996900825548947598, guid: 3069661bef05f324bb09cd014931ab90, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -3664312996461427742, guid: f3bcfce96fa63da4ba22ddf2b21c183a, type: 2}
-    - target: {fileID: 6996900825548947598, guid: 3069661bef05f324bb09cd014931ab90, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190080
-      objectReference: {fileID: 0}
     - target: {fileID: 8058217312907229245, guid: 3069661bef05f324bb09cd014931ab90, type: 3}
       propertyPath: m_Name
       value: MainUI

@@ -8,11 +8,13 @@ public class FollowingEnemy : Entity, IEntity
     private Vector3 centerPos;
     [SerializeField] GameObject player;
     [SerializeField] private LevelGeneration levelGeneration;
+
     public void Awake()
     {
         lives = 1;
         dir = transform.right;
     }
+
     private void Update()
     {
         if (player.transform.position.y < centerPos.y - 10)
@@ -30,10 +32,12 @@ public class FollowingEnemy : Entity, IEntity
             OnHold();
         }
     }
+
     public void UpdateCenterPosition()
     {
         centerPos = transform.position;
     }
+
     private void OnHold()
     {
         if (Mathf.Abs(transform.position.x) >= 2.5f)
@@ -42,10 +46,12 @@ public class FollowingEnemy : Entity, IEntity
         }
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, Time.deltaTime);
     }
+
     private void Follow()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * 2);
     }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "DeathZone")
@@ -58,6 +64,7 @@ public class FollowingEnemy : Entity, IEntity
             GetDamage();
         }
     }
+
     public override void Die()
     {
         this.levelGeneration.RegenerateFollowingEnemy(this);

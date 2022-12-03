@@ -20,6 +20,7 @@ public class LevelGeneration : MonoBehaviour
     [Space(20)]
     [SerializeField] private SpawnField followingEnemySpawn;
     [SerializeField] private GameObject followingEnemyPref;
+
     private void Start()
     {
         InitialGenerate(flyEnemyPref, flyEnemySpawn);
