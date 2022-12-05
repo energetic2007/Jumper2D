@@ -9,25 +9,21 @@ public class FollowingEnemy : Entity, IEntity
     [SerializeField] GameObject player;
     [SerializeField] private LevelGeneration levelGeneration;
 
-    public void Awake()
+    public void Start()
     {
         lives = 1;
         dir = transform.right;
+        UpdateCenterPosition();
     }
 
     private void Update()
     {
-        if (player.transform.position.y < centerPos.y - 10)
-        {
-            OnHold();
-        }
-
-        if (player.transform.position.y >= centerPos.y - 10)
+        Debug.Log($"PLAYER: {player.transform.position.y} CENTER: {centerPos.y}");
+        if (Mathf.Abs(player.transform.position.y - centerPos.y) < 2)
         {
             Follow();
         }
-
-        if (player.transform.position.y >= centerPos.y + 10)
+        else
         {
             OnHold();
         }
@@ -40,7 +36,7 @@ public class FollowingEnemy : Entity, IEntity
 
     private void OnHold()
     {
-        if (Mathf.Abs(transform.position.x) >= 2.5f)
+        if (Mathf.Abs(transform.position.x) >= 3f)
         {
             dir *= -1f;
         }
@@ -49,7 +45,7 @@ public class FollowingEnemy : Entity, IEntity
 
     private void Follow()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * 2);
+        transform.position = Vector3.MoveTowards(transform.transform.position, player.transform.position, Time.deltaTime * 1.5f);
     }
 
     public void OnTriggerEnter2D(Collider2D other)

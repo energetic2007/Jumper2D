@@ -67,7 +67,6 @@ public class LevelGeneration : MonoBehaviour
     public void RegenerateFollowingEnemy(FollowingEnemy followingEnemy)
     {
         RespawnEntity(followingEnemy.gameObject, this.followingEnemySpawn, followingEnemy.transform.position.y + ENTITY_SPAWN_SCREEN_OFFSET_Y);
-        followingEnemy.UpdateCenterPosition();
     }
 
     public void RegeneratePlaform(GameObject platform)
