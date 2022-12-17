@@ -20,6 +20,7 @@ public class Score : MonoBehaviour
             currentScore = currentY;
         }
         currentScoreText.text = currentScore.ToString() + " points";
+        AddHighScore();
     }
 
     private void Awake()
@@ -27,7 +28,7 @@ public class Score : MonoBehaviour
         if (PlayerPrefs.HasKey("SaveScore"))
         {
             highestScore = PlayerPrefs.GetInt("SaveScore");
-            highScoreText.text = highestScore.ToString() + " points";
+            // highScoreText.text = highestScore.ToString() + " points";
         }
     }
     /**
@@ -39,7 +40,7 @@ public class Score : MonoBehaviour
         if (currentScore > highestScore)
         {
             PlayerPrefs.SetInt("SaveScore", highestScore);
-            highScoreText.text = highestScore.ToString() + " points";
+            highScoreText.text = "Hight score: " + highestScore.ToString();
             highestScore = currentScore;
         }
     }

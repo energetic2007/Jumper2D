@@ -41,7 +41,7 @@ public class LevelGeneration : MonoBehaviour
     {
         for (int i = 0; i < spawnField.amount; i++)
         {
-            RespawnEntity(Instantiate(pref), spawnField, 0f + i);
+            RespawnEntity(Instantiate(pref, transform), spawnField, 0f + i);
         }
     }
 

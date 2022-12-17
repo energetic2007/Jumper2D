@@ -18,7 +18,6 @@ public class FollowingEnemy : Entity, IEntity
 
     private void Update()
     {
-        Debug.Log($"PLAYER: {player.transform.position.y} CENTER: {centerPos.y}");
         if (Mathf.Abs(player.transform.position.y - centerPos.y) < 2)
         {
             Follow();
