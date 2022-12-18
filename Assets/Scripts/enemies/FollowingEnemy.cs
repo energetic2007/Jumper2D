@@ -8,6 +8,8 @@ public class FollowingEnemy : Entity, IEntity
     private Vector3 centerPos;
     [SerializeField] GameObject player;
     [SerializeField] private LevelGeneration levelGeneration;
+    [SerializeField] private float targetRange;
+    [SerializeField] private float speed;
 
     public void Start()
     {
@@ -18,7 +20,7 @@ public class FollowingEnemy : Entity, IEntity
 
     private void Update()
     {
-        if (Mathf.Abs(player.transform.position.y - centerPos.y) < 2)
+        if (Mathf.Abs(player.transform.position.y - centerPos.y) < targetRange)
         {
             Follow();
         }
@@ -35,7 +37,7 @@ public class FollowingEnemy : Entity, IEntity
 
     private void OnHold()
     {
-        if (Mathf.Abs(transform.position.x) >= 3f)
+        if (Mathf.Abs(transform.position.x) >= targetRange)
         {
             dir *= -1f;
         }
@@ -44,7 +46,7 @@ public class FollowingEnemy : Entity, IEntity
 
     private void Follow()
     {
-        transform.position = Vector3.MoveTowards(transform.transform.position, player.transform.position, Time.deltaTime * 1.5f);
+        transform.position = Vector3.MoveTowards(transform.transform.position, player.transform.position, Time.deltaTime * speed);
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -56,6 +58,7 @@ public class FollowingEnemy : Entity, IEntity
         }
         if (other.tag == "Player")
         {
+            Debug.Log("collide");
             GetDamage();
         }
     }
